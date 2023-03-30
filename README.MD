@@ -111,3 +111,7 @@ O producer garante que uma mensagem será enviada uma única vez, mesmo que o pr
 O consumer é um processo que lê mensagens de um ou mais tópicos. O consumer pode ser um processo de batch ou um processo de streaming.
 
 O consumer group é um conjunto de consumers que compartilham mensagens de um tópico. Cada mensagem é entregue para um único consumer dentro de um consumer group.
+
+## O que é o Kafka Connect?
+
+O Kafka Connect é um framework para conectar fontes de dados e sinks de dados com o Kafka. O Kafka Connect é uma ferramenta open-source que permite a integração de fontes de dados e sinks de dados com o Kafka.
