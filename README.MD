@@ -115,3 +115,45 @@ O consumer group é um conjunto de consumers que compartilham mensagens de um t�
 ## O que é o Kafka Connect?
 
 O Kafka Connect é um framework para conectar fontes de dados e sinks de dados com o Kafka. O Kafka Connect é uma ferramenta open-source que permite a integração de fontes de dados e sinks de dados com o Kafka.
+
+### Dinâmica de funcionamento
+
+O Apache Kafka conversa com o Kafka Connect, que por sua vez conversa com as fontes de dados e sinks de dados através de diversos tipos de conectores.
+
+Temos conectores focados em fontes de dados, como por exemplo: JDBC, MongoDB, MySQL, PostgreSQL, etc. E temos conectores focados em sinks de dados, como por exemplo: JDBC, MongoDB, MySQL, PostgreSQL, etc.
+
+E também temos conectores focados em fontes e sinks de dados, como por exemplo: Elastic Search, S3, AWS Lambda, etc.
+
+## Conectores
+
+Sink: é um conector que permite que os dados fluam do Kafka para um destino externo, como um banco de dados ou um sistema de armazenamento em nuvem. É usado quando você quer exportar dados do Kafka para outra plataforma ou serviço.
+
+Source: é um conector que permite que os dados fluam de um sistema externo para o Kafka. É usado quando você deseja importar dados de outra plataforma ou serviço para o Kafka.
+
+Replicator: é um tipo especial de conector que permite replicar dados de um cluster Kafka para outro. É usado para criar cópias de um cluster Kafka para fins de backup, recuperação de desastres, análise de dados ou outras finalidades.
+
+Em resumo, o sink é usado para enviar dados do Kafka para outro sistema, o source é usado para receber dados de outro sistema e o replicator é usado para replicar dados de um cluster Kafka para outro.
+
+## Standlone Workers
+
+O Kafka Connect é composto por um ou mais workers. Cada worker é um processo que executa um ou mais conectores. Cada worker é composto por um ou mais tasks. Cada task é um processo que executa um ou mais conectores.
+
+## Distributed Workers
+
+O Kafka Connect também pode ser executado em modo distribuído. Nesse caso, cada worker é um processo que executa um ou mais tasks. Cada task é um processo que executa um ou mais conectores.
+
+## Converters
+
+Os converters são responsáveis por converter os dados de entrada e saída do Kafka Connect. Os converters são configurados no arquivo de configuração do worker.
+
+## Dead Letter Queue
+
+A dead letter queue é uma fila de mensagens que armazena mensagens que não foram processadas com sucesso. A dead letter queue é configurada no arquivo de configuração do worker.
+
+No Kafka Connect, a dead letter queue é chamada de error queue. A dead letter queue é configurada no arquivo de configuração do worker.
+
+Quando há um registro inválido, independente da razão, o erro pode ser tratado nas configurações do conector através do parâmetro errors.tolerance. Esse tipo de configuração só pode ser realizada para conectores do tipo Sink.
+
+- none: Faz a tarefa parar imediatamente
+- all: Erros s'ao ignorados e o processo continua normalmente
+- errors.deadletterqueue.topic.name: Erros são enviados para a dead letter queue
