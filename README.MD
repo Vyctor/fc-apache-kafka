@@ -157,3 +157,39 @@ Quando há um registro inválido, independente da razão, o erro pode ser tratad
 - none: Faz a tarefa parar imediatamente
 - all: Erros s'ao ignorados e o processo continua normalmente
 - errors.deadletterqueue.topic.name: Erros são enviados para a dead letter queue
+
+## MSK: Apache Kafka Gerenciado pela AWS - Reduzindo a complexidade de instalar e administrar um cluster de Kafka na AWS
+
+### Qual problema o Kafka resolve?
+
+Mover e transformar um grande volume de dados em tempo real entre diferentes sistemas.
+
+### O que é o MSK?
+
+O Amazon MSK é um serviço totalmente gerenciado que facilita a implantação e a operação do Apache Kafka em escala na AWS. O Amazon MSK é um serviço totalmente gerenciado que facilita a implantação e a operação do Apache Kafka em escala na AWS.
+
+- Zookeeper Incluído
+- Altamente Disponível
+- Altamente Integrado
+- Altamente Seguro
+- Configurável
+- Escalável
+
+### Vantagens do MSK
+
+- Instalação simplificada através do console
+- Automatização simplificada com Terraform
+- Excelente desempenho e segurança
+- Última versão do Kafka
+
+### Desvantagens do MSK
+
+- Expansão do cluster ainda não funciona via Terraform, apenas via aws cli
+- Ausência de métricas importantes como o LAG
+- Poucas opções de tipos de instâncias
+- Não oferece instância reservada
+
+### Dicas
+
+- Para n consumidores lerem de um mesmo tópico simultaneamente é necessário que este tópico tenha n partições.
+- Cuidado com o tamanho das partições. Não deixe muito pequeno, pois isso pode gerar muitas partições e isso pode gerar um overhead de processamento. Não deixe muito grande, pois isso pode gerar um overhead de armazenamento.
